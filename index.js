@@ -1,8 +1,13 @@
+require('dotenv').config();  // Import dotenv and configure it
+
 const express = require("express");
 const axios = require("axios");
 
 const app = express();
-const PORT = 8000;
+
+// Get the port from the environment, fallback to 8000 if not set
+const PORT = process.env.PORT || 8000;
+
 const TARGET_URL = "https://billmaker-server.onrender.com/api/file"; 
 
 // Function to make requests every 2 minutes
@@ -14,14 +19,12 @@ function pingWebsite() {
         } catch (error) {
             console.error("Error pinging website:", error.message);
         }
-    }, 120000); 
+    }, 120000); // 120000 ms = 2 minutes
 }
 
 // Start the ping process
 pingWebsite();
 
-
-
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on ${PORT}`);
 });
