@@ -19,7 +19,7 @@ function pingWebsite() {
         } catch (error) {
             console.error("Error pinging website:", error.message);
         }
-    }, 120000); // 120000 ms = 2 minutes
+    }, 12000); // 120000 ms = 2 minutes
 }
 
 // Start the ping process
